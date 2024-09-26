@@ -13,6 +13,12 @@ class AuthController extends Controller
 
     public function showSignupForm()
     {
-        return view('auth.signup');
+        return view('auth.register'); // Asegúrate de que esto sea 'auth.register'
+    }
+
+    public function register(Request $request)
+    {
+        // Aquí va la lógica para manejar el registro
     }
 }
+

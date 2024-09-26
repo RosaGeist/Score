@@ -44,8 +44,8 @@
       <h3 class="card-title">Bienvenido a Score</h3>
       <p class="card-text">Gestiona tus proyectos y accede a todas las funcionalidades que ofrecemos.</p>
       <div class="d-grid gap-2">
-        <a href="index.html" class="btn btn-light btn-lg">Iniciar sesión</a>
-        <a href="signup.html" class="btn btn-secondary btn-lg">Crear cuenta</a>
+        <a href="{{ route('login') }}" class="btn btn-light btn-lg">Iniciar sesión</a>
+        <a href="{{ route('register') }}" class="btn btn-secondary btn-lg">Crear cuenta</a>
       </div>
     </div>
   </div>

@@ -19,4 +19,7 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 });
+use App\Http\Controllers\AuthController;
 
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::get('/signup', [AuthController::class, 'showSignupForm'])->name('signup');

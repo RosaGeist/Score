@@ -97,7 +97,7 @@
           <p>¿No tienes cuenta? <a href="{{ route('register') }}" class="btn btn-link footer-link">Crear una Cuenta</a></p>
         </div>
         <div class="mt-3 text-center">
-          <a href="{{ url('/') }}" class="footer-link">Volver a la Página de Bienvenida</a>
+          <a href="{{ url('/dashboard') }}" class="footer-link">Volver a la Página de Bienvenida</a>
         </div>
       </div>
     </div>

@@ -72,6 +72,7 @@
         <h3 class="card-title text-center mb-4">Crear Cuenta</h3>
         <form method="POST" action="{{ route('register.post') }}">
           @csrf
+          
           <div class="mb-3">
             <label for="name" class="form-label">Nombre</label>
             <input type="text" name="name" class="form-control" id="name" required>
@@ -81,12 +82,38 @@
             <input type="email" name="email" class="form-control" id="email" required>
           </div>
           <div class="mb-3">
+            <label for="telefono" class="form-label">Teléfono</label>
+            <input type="text" name="telefono" class="form-control" id="telefono">
+          </div>
+          <div class="mb-3" id="especializacion-field" style="display:none;">
+            <label for="especializacion" class="form-label">Especialización</label>
+            <input type="text" name="especializacion" class="form-control" id="especializacion">
+          </div>
+          <div class="mb-3" id="matricula-field" style="display:none;">
+            <label for="matricula" class="form-label">Matrícula</label>
+            <input type="text" name="matricula" class="form-control" id="matricula">
+          </div>
+          <div class="mb-3" id="equipo-field" style="display:none;">
+            <label for="equipo" class="form-label">Equipo</label>
+            <input type="text" name="equipo" class="form-control" id="equipo">
+          </div>
+          <div class="mb-3">
             <label for="password" class="form-label">Contraseña</label>
             <input type="password" name="password" class="form-control" id="password" required>
           </div>
+          
           <div class="mb-3">
             <label for="password_confirmation" class="form-label">Confirmar Contraseña</label>
             <input type="password" name="password_confirmation" class="form-control" id="password_confirmation" required>
+          </div>
+          <div class="mb-3">
+            <label for="role" class="form-label">Tipo de Usuario</label>
+            <select name="role" class="form-select" id="role" required>
+              <option value="" disabled selected>Selecciona un rol</option>
+              <option value="docente">Docente/Tutor</option>
+              <option value="estudiante">Estudiante</option>
+              <option value="administrador">Administrador</option>
+            </select>
           </div>
           <button type="submit" class="btn btn-primary w-100">Crear Cuenta</button>
         </form>
@@ -94,7 +121,7 @@
           <p>¿Ya tienes cuenta? <a href="{{ route('login') }}" class="btn btn-link footer-link">Iniciar sesión</a></p>
         </div>
         <div class="mt-3 text-center">
-          <a href="{{ url('/') }}" class="footer-link">Volver a la Página de Bienvenida</a>
+          <a href="{{ url('/dashboard') }}" class="footer-link">Volver a la Página de Bienvenida</a>
         </div>
       </div>
     </div>
@@ -102,6 +129,16 @@
 
   <!-- Bootstrap 5 JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Muestra y oculta campos dependiendo del rol seleccionado
+    document.getElementById('role').addEventListener('change', function () {
+      const role = this.value;
+      document.getElementById('especializacion-field').style.display = role === 'docente' ? 'block' : 'none';
+      document.getElementById('matricula-field').style.display = role === 'estudiante' ? 'block' : 'none';
+      document.getElementById('equipo-field').style.display = role === 'estudiante' ? 'block' : 'none';
+      document.getElementById('telefono-field').style.display = (role === 'docente' || role === 'administrador') ? 'block' : 'none';
+    });
+  </script>
 </body>
 </html>
 
